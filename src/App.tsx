@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useSpring } from "motion/react";
 import { 
   Moon, Sun, Github, Linkedin, Mail, Phone, 
   MapPin, BookOpen, Briefcase, Award, Code, 
@@ -13,6 +13,17 @@ import sosmedDscFoto from "./sosmed-dsc-foto.jpeg";
 export default function App() {
   const [isDark, setIsDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const cursorX = useSpring(0, { stiffness: 300, damping: 30 });
+  const cursorY = useSpring(0, { stiffness: 300, damping: 30 });
+
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX - 200);
+      cursorY.set(e.clientY - 200);
+    };
+    window.addEventListener("mousemove", moveCursor);
+    return () => window.removeEventListener("mousemove", moveCursor);
+  }, []);
 
   useEffect(() => {
     // Check initial preference
@@ -38,7 +49,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen transition-colors duration-300 bg-surface dark:bg-[#0f1115] overflow-x-hidden">
+    <div className="min-h-screen transition-colors duration-300 bg-surface dark:bg-[#0f1115] overflow-x-hidden relative">
+      {/* Interactive Cursor Glow */}
+      <motion.div 
+        className="pointer-events-none fixed top-0 left-0 w-[400px] h-[400px] bg-primary/20 dark:bg-primary/20 rounded-full blur-[100px] z-50 hidden lg:block mix-blend-screen dark:mix-blend-lighten"
+        style={{ x: cursorX, y: cursorY }}
+      />
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-white/70 dark:bg-[#1a1d24]/70 backdrop-blur-xl shadow-sm border-b border-gray-200/50 dark:border-gray-800/50 transition-colors duration-300">
         <div className="flex justify-between items-center px-6 md:px-12 py-4 max-w-7xl mx-auto">
@@ -287,8 +303,8 @@ export default function App() {
           <div className="lg:col-span-4 space-y-12">
             
             {/* Education */}
-            <section id="education">
-              <div className="bg-surface-variant/50 border border-gray-200 dark:border-gray-800 p-8 rounded-[2rem] shadow-sm">
+            <motion.section id="education" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6 }}>
+              <div className="bg-surface-variant/50 border border-gray-200 dark:border-gray-800 p-8 rounded-[2rem] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 z-10 relative hover:border-primary/30">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-primary/10 text-primary rounded-xl">
                     <BookOpen className="w-5 h-5" />
@@ -307,8 +323,8 @@ export default function App() {
             </section>
 
             {/* Certifications */}
-            <section>
-              <div className="bg-surface-variant/50 border border-gray-200 dark:border-gray-800 p-8 rounded-[2rem] shadow-sm">
+            <motion.section initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: 0.1 }}>
+              <div className="bg-surface-variant/50 border border-gray-200 dark:border-gray-800 p-8 rounded-[2rem] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 z-10 relative hover:border-primary/30">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-secondary/10 text-secondary rounded-xl">
                     <Award className="w-5 h-5" />
@@ -333,8 +349,8 @@ export default function App() {
             </section>
 
             {/* Skills */}
-            <section id="skills">
-              <div className="bg-surface-variant/50 border border-gray-200 dark:border-gray-800 p-8 rounded-[2rem] shadow-sm">
+            <motion.section id="skills" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: 0.2 }}>
+              <div className="bg-surface-variant/50 border border-gray-200 dark:border-gray-800 p-8 rounded-[2rem] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 z-10 relative hover:border-primary/30">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-tertiary/10 text-tertiary rounded-xl">
                     <Code className="w-5 h-5" />
@@ -364,7 +380,7 @@ export default function App() {
                   </div>
                 </div>
               </div>
-            </section>
+            </motion.section>
 
           </div>
         </div>
@@ -386,19 +402,31 @@ export default function App() {
 // Helper Components
 function SectionHeader({ icon, title }: { icon: React.ReactNode, title: string }) {
   return (
-    <div className="flex items-center gap-4 mb-10">
-      <div className="p-4 bg-primary/10 text-primary rounded-2xl">
+    <motion.div 
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6 }}
+      className="flex items-center gap-4 mb-10 group"
+    >
+      <div className="p-4 bg-primary/10 text-primary rounded-2xl group-hover:scale-110 transition-transform duration-300 ease-out">
         {icon}
       </div>
       <h2 className="font-headline text-3xl font-extrabold">{title}</h2>
-    </div>
+    </motion.div>
   );
 }
 
 function ExperienceItem({ title, date, points, image }: { title: string, date: string, points: string[], image?: string }) {
   return (
-    <div className="relative flex items-start group">
-      <div className="hidden md:block w-4 h-4 rounded-full bg-primary border-4 border-surface shadow-sm absolute left-1/2 -translate-x-1/2 mt-1.5 z-10 transition-transform group-hover:scale-125"></div>
+    <motion.div 
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6 }}
+      className="relative flex items-start group z-10"
+    >
+      <div className="hidden md:block w-4 h-4 rounded-full bg-primary border-4 border-surface shadow-sm absolute left-1/2 -translate-x-1/2 mt-1.5 z-20 transition-transform duration-300 group-hover:scale-[2] group-hover:bg-primary-container"></div>
       <div className="md:w-1/2 pr-8 md:pr-12 md:text-right hidden md:block">
         <span className="text-sm font-bold text-primary block mt-1 mb-4">{date}</span>
         {image && (
@@ -427,15 +455,19 @@ function ExperienceItem({ title, date, points, image }: { title: string, date: s
           </ul>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 function ProjectCard({ title, date, description, tech, link, status }: { title: string, date: string, description: string, tech: string[], link?: string, status?: string }) {
   return (
     <motion.div 
-      whileHover={{ y: -5 }}
-      className="bg-surface-variant/50 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex flex-col h-full shadow-sm"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      whileHover={{ y: -8, scale: 1.01 }}
+      transition={{ duration: 0.4 }}
+      className="bg-surface-variant/50 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex flex-col h-full shadow-sm hover:shadow-xl hover:border-primary/40 relative z-10 overflow-hidden group"
     >
       <div className="flex justify-between items-start mb-4">
         <h3 className="font-headline font-bold text-xl text-on-surface leading-tight">{title}</h3>
