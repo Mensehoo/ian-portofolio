@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-headline: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  
+  --color-surface: var(--color-surface-value);
+  --color-primary: var(--color-primary-value);
+  --color-primary-container: var(--color-primary-container-value);
+  --color-secondary: var(--color-secondary-value);
+  --color-secondary-container: var(--color-secondary-container-value);
+  --color-tertiary: var(--color-tertiary-value);
+  --color-on-surface: var(--color-on-surface-value);
+  --color-on-surface-variant: var(--color-on-surface-variant-value);
+  --color-surface-variant: var(--color-surface-variant-value);
+}
+
+@layer base {
+  :root {
+    --color-surface-value: #f5f6f7;
+    --color-surface-variant-value: #ffffff;
+    --color-on-surface-value: #2c2f30;
+    --color-on-surface-variant-value: #595c5d;
+    --color-primary-value: #0058bc;
+    --color-primary-container-value: #6d9fff;
+    --color-secondary-value: #006a2b;
+    --color-secondary-container-value: #86f898;
+    --color-tertiary-value: #b41a14;
+  }
+  
+  :root.dark {
+    --color-surface-value: #0f1115;
+    --color-surface-variant-value: #1a1d24;
+    --color-on-surface-value: #f5f6f7;
+    --color-on-surface-variant-value: #a1a3a8;
+    --color-primary-value: #4da8da; 
+    --color-primary-container-value: #1e3a8a;
+    --color-secondary-value: #4ade80;
+    --color-secondary-container-value: #064e3b;
+    --color-tertiary-value: #f87171;
+  }
+
+  body {
+    @apply bg-surface text-on-surface font-body selection:bg-primary-container selection:text-white transition-colors duration-300;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
