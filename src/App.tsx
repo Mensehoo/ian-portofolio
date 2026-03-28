@@ -320,7 +320,7 @@ export default function App() {
                   <span className="text-primary bg-primary/10 px-3 py-1 rounded-full">IPK 3.50</span>
                 </div>
               </div>
-            </section>
+            </motion.section>
 
             {/* Certifications */}
             <motion.section initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: 0.1 }}>
@@ -346,7 +346,7 @@ export default function App() {
                   ))}
                 </ul>
               </div>
-            </section>
+            </motion.section>
 
             {/* Skills */}
             <motion.section id="skills" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: 0.2 }}>
