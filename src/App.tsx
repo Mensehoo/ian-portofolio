@@ -38,7 +38,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen transition-colors duration-300 bg-surface dark:bg-[#0f1115]">
+    <div className="min-h-screen transition-colors duration-300 bg-surface dark:bg-[#0f1115] overflow-x-hidden">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-white/70 dark:bg-[#1a1d24]/70 backdrop-blur-xl shadow-sm border-b border-gray-200/50 dark:border-gray-800/50 transition-colors duration-300">
         <div className="flex justify-between items-center px-6 md:px-12 py-4 max-w-7xl mx-auto">
@@ -112,8 +112,8 @@ export default function App() {
             className="relative w-full flex items-end justify-center group mb-12 h-[50vh] sm:h-[60vh] max-h-[600px] mt-8"
           >
             {/* Huge Background Text for Photo */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[75%] w-[120vw] flex flex-col items-center justify-center z-0 pointer-events-none select-none" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              <div className="text-[4rem] sm:text-[6.5rem] md:text-[8rem] lg:text-[10rem] font-black leading-[0.85] text-blue-600/40 dark:text-blue-400/30 tracking-tighter text-center whitespace-nowrap drop-shadow-md">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[75%] w-full flex flex-col items-center justify-center z-0 pointer-events-none select-none" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              <div className="text-[3rem] sm:text-[6.5rem] md:text-[8rem] lg:text-[10rem] font-black leading-[0.85] text-blue-600/40 dark:text-blue-400/30 tracking-tighter text-center whitespace-nowrap drop-shadow-md">
                 I'm ian<br/>Tech n Marketing<br/>enthusiast
               </div>
             </div>
