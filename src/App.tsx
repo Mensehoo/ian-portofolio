@@ -171,6 +171,17 @@ export default function App() {
                 <span className="text-on-surface font-semibold dark:text-gray-200"> Lead Google Developer Student Clubs</span>. 
                 Terbiasa menangani konten teknis, penyuntingan akademik, serta pengembangan proyek berbasis AI. Memiliki motivasi tinggi untuk mengembangkan solusi teknologi yang aplikatif dan berdampak bagi lingkungan akademik.
               </p>
+              
+              <div className="mt-8 sm:mt-10 flex items-center justify-start">
+                <a 
+                  href="https://drive.google.com/file/d/1zaQ0n2UjdW0xt1YJ0tYrVS4UUq82AxNr/view?usp=sharing" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-gradient-to-br from-primary to-primary-container text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-300"
+                >
+                  <ExternalLink className="w-5 h-5" /> My CV here
+                </a>
+              </div>
             </div>
             
             <div className="lg:w-1/3 flex flex-col items-start lg:items-end justify-start gap-4" id="contact">
