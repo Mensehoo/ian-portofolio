@@ -9,6 +9,8 @@ import ProfilFoto from "./profil-foto.png";
 import gsaFoto from "./gsa-foto.jpg";
 import leadDscFoto from "./lead-dsc-foto.jpeg";
 import sosmedDscFoto from "./sosmed-dsc-foto.jpeg";
+import pelindoFoto from "./pelindo-foto.png";
+
 
 export default function App() {
   const [isDark, setIsDark] = useState(false);
@@ -164,12 +166,13 @@ export default function App() {
               </h1>
               <p className="text-base md:text-lg text-on-surface-variant leading-relaxed mb-0 max-w-2xl">
                 Mahasiswa S1 Teknik Informatika Universitas Muhammadiyah Prof. Dr. Hamka dengan minat kuat pada 
-                <span className="text-primary font-semibold"> pengembangan web</span> dan 
-                <span className="text-primary font-semibold"> Artificial Intelligence</span>, khususnya 
-                <span className="text-primary font-semibold"> Generative AI</span>. Berpengalaman dalam kepemimpinan dan pengelolaan komunitas teknologi melalui peran sebagai 
+                <span className="text-primary font-semibold"> tata kelola TI (IT Governance)</span>, 
+                <span className="text-primary font-semibold"> pengembangan web</span>, dan 
+                <span className="text-primary font-semibold"> Artificial Intelligence</span>. Saat ini aktif magang sebagai 
+                <span className="text-primary font-semibold"> Junior IT Governance</span> di 
+                <span className="text-on-surface font-semibold dark:text-gray-200"> PT Pelabuhan Tanjung Priok</span>. Memiliki pengalaman kepemimpinan sebagai 
                 <span className="text-on-surface font-semibold dark:text-gray-200"> Google Student Ambassador</span> dan 
-                <span className="text-on-surface font-semibold dark:text-gray-200"> Lead Google Developer Student Clubs</span>. 
-                Terbiasa menangani konten teknis, penyuntingan akademik, serta pengembangan proyek berbasis AI. Memiliki motivasi tinggi untuk mengembangkan solusi teknologi yang aplikatif dan berdampak bagi lingkungan akademik.
+                <span className="text-on-surface font-semibold dark:text-gray-200"> Lead Google Developer Student Clubs</span>, serta terbiasa menangani manajemen kepatuhan TI, konten teknis, penyuntingan akademik, dan pengembangan proyek berbasis AI.
               </p>
               
               <div className="mt-8 sm:mt-10 flex items-center justify-start">
@@ -213,6 +216,16 @@ export default function App() {
             <section id="experience">
               <SectionHeader icon={<Briefcase />} title="Pengalaman Kerja" />
               <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-primary/50 before:via-gray-200 before:to-transparent dark:before:via-gray-800">
+                <ExperienceItem 
+                  title="Junior IT Governance | PT Pelabuhan Tanjung Priok"
+                  date="Mei 2026 – Sekarang"
+                  points={[
+                    "Mendukung proses evaluasi, kepatuhan, dan tata kelola Teknologi Informasi (IT Governance) sesuai dengan standar perusahaan.",
+                    "Membantu menyusun dan memperbarui dokumentasi kebijakan TI, pedoman kerja, serta Standard Operating Procedure (SOP).",
+                    "Berpartisipasi dalam analisis risiko TI dan evaluasi efektivitas kontrol keamanan data."
+                  ]}
+                  image={pelindoFoto}
+                />
                 <ExperienceItem 
                   title="Lead | Google Developer Student Clubs (GDSC) UHAMKA"
                   date="Des 2025 – Sekarang"
